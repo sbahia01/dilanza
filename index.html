@@ -9,8 +9,8 @@
 <body>
     <header>
         <div class="lang-selector">
-            <button class="lang-btn active">PT</button>
-            <button class="lang-btn">EN</button>
+            <button id="btnPT" class="lang-btn active" onclick="changeLang('PT')">PT</button>
+            <button id="btnEN" class="lang-btn" onclick="changeLang('EN')">EN</button>
         </div>
         <h1 id="brandName">DILANZA</h1>
     </header>
@@ -21,9 +21,15 @@
                 <img src="camisa-preta.webp" alt="Camisa Pima - Preta">
             </div>
             <div class="details-box">
-                <h2 class="product-title">CAMISA PIMA - PRETA</h2>
-                <p class="product-price">R$ 490,00</p>
-                <button class="buy-btn">VER DETALHES</button>
+                <h2 id="titleBlack" class="product-title">CAMISA PIMA - PRETA</h2>
+                <p id="priceBlack" class="product-price">R$ 490,00</p>
+                
+                <p id="descBlack" class="product-description"></p>
+                
+                <div class="actions">
+                    <button id="btnDetailBlack" class="detail-btn" onclick="toggleDetails('black')">VER DETALHES</button>
+                    <button id="btnBuyBlack" class="buy-btn">COMPRAR AGORA</button>
+                </div>
             </div>
         </div>
 
@@ -32,12 +38,19 @@
                 <img src="camisa-branca.webp" alt="Camisa Pima - Branca">
             </div>
             <div class="details-box">
-                <h2 class="product-title">CAMISA PIMA - BRANCA</h2>
-                <p class="product-price">R$ 490,00</p>
-                <button class="buy-btn">VER DETALHES</button>
+                <h2 id="titleWhite" class="product-title">CAMISA PIMA - BRANCA</h2>
+                <p id="priceWhite" class="product-price">R$ 490,00</p>
+                
+                <p id="descWhite" class="product-description"></p>
+                
+                <div class="actions">
+                    <button id="btnDetailWhite" class="detail-btn" onclick="toggleDetails('white')">VER DETALHES</button>
+                    <button id="btnBuyWhite" class="buy-btn">COMPRAR AGORA</button>
+                </div>
             </div>
         </div>
     </main>
 
+    <script src="script.js"></script>
 </body>
 </html>
