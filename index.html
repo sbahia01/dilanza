@@ -9,15 +9,15 @@
 <body>
     <header>
         <div class="lang-selector">
-            <button class="lang-btn active" onclick="changeLang('PT')">PT</button>
-            <button class="lang-btn" onclick="changeLang('EN')">EN</button>
+            <button class="lang-btn active" id="btnPT" onclick="changeLang('PT')">PT</button>
+            <button class="lang-btn" id="btnEN" onclick="changeLang('EN')">EN</button>
         </div>
         <h1 id="brandName">DILANZA</h1>
     </header>
 
     <main class="product-container">
         <div class="image-section">
-            <img id="productImage" src="camisa-preta.png" alt="Camisa Pima">
+            <img id="productImage" src="camisa-preta.webp" alt="Camisa Pima Premium">
         </div>
 
         <div class="details-section">
@@ -25,11 +25,13 @@
             <p id="productPrice">R$ 490,00</p>
             
             <div class="color-selector">
-                <div class="swatch black active" onclick="changeColor('black')"></div>
-                <div class="swatch white" onclick="changeColor('white')"></div>
+                <span class="label">COR:</span>
+                <div class="swatch black active" id="swatchBlack" onclick="changeColor('black')"></div>
+                <div class="swatch white" id="swatchWhite" onclick="changeColor('white')"></div>
             </div>
             
             <button class="buy-btn">ADICIONAR AO CARRINHO</button>
+            <p class="shipping-info">Entrega grátis para todo o Brasil.</p>
         </div>
     </main>
 
