@@ -1,137 +1,66 @@
-/* ... manter o início do código anterior ... */
+/* ... manter o início do seu arquivo ... */
 
-/* Layout de Produto Estilo Farfetch */
+/* Ajuste da Vitrine (Página Principal) */
+.product-grid {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    padding: 40px;
+    flex-wrap: wrap; /* Garante que não quebre em telas menores */
+}
+
+.product-card {
+    text-align: center;
+    width: 350px; /* Largura fixa para manter o alinhamento */
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+/* Página de Compra (Estilo Farfetch) */
 .product-page-container {
     display: flex;
-    max-width: 1300px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 40px 20px;
-    gap: 60px;
-}
-
-.product-image-side {
-    flex: 1.5;
-    position: sticky;
-    top: 20px;
-    text-align: center;
-}
-
-.product-image-side img {
-    width: 100%;
-    max-width: 600px;
-    height: auto;
+    padding: 20px;
+    gap: 40px;
 }
 
 .product-info-side {
     flex: 1;
-    display: flex;
-    flex-direction: column;
+    text-align: left;
 }
 
-.breadcrumb {
-    font-size: 10px;
-    letter-spacing: 1px;
-    color: #888;
-    text-transform: uppercase;
-    margin-bottom: 40px;
-}
-
-.product-brand-title {
-    font-size: 18px;
-    font-weight: bold;
-    margin: 0;
-}
-
-.product-name-subtitle {
-    font-size: 16px;
-    font-weight: 300;
-    color: #444;
-    margin: 5px 0 20px 0;
-}
-
-.price-large {
-    font-size: 20px;
-    font-weight: 400;
-    margin-bottom: 40px;
-}
-
-/* Seleção de Tamanho */
-.size-selector-label {
-    font-size: 11px;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
+/* Botões de Tamanho Realistas */
 .size-options {
     display: flex;
     gap: 10px;
-    margin-bottom: 30px;
+    margin: 15px 0;
 }
 
-.size-options button {
-    border: 1px solid #e5e5e5;
+.size-btn {
+    border: 1px solid #ddd;
     background: #fff;
-    padding: 12px 20px;
-    font-size: 12px;
+    padding: 10px 15px;
     cursor: pointer;
-    transition: 0.3s;
+    font-size: 12px;
+    transition: 0.2s;
 }
 
-.size-options button:hover, .size-options button.selected {
+.size-btn.selected {
     border-color: #000;
-    background: #f9f9f9;
-}
-
-/* Botão de Compra */
-.add-to-cart-btn {
-    background: #000;
-    color: #fff;
-    border: none;
-    padding: 20px;
-    width: 100%;
-    font-size: 12px;
+    background: #f0f0f0;
     font-weight: bold;
-    letter-spacing: 2px;
-    cursor: pointer;
-    margin-bottom: 40px;
 }
 
-/* Seção Detalhada Estilo Farfetch */
-.info-section {
+/* Detalhes Técnicos (Segunda Imagem) */
+.farfetch-details {
+    margin-top: 30px;
     border-top: 1px solid #eee;
-    padding: 25px 0;
-}
-
-.info-section h3 {
-    font-size: 11px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-bottom: 15px;
-}
-
-.info-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    font-size: 12px;
-    line-height: 1.8;
-    color: #333;
-}
-
-.info-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.info-list li::before {
-    content: "•";
-    padding-right: 8px;
-    color: #999;
-}
-
-.product-ids {
-    font-size: 10px;
-    color: #999;
-    margin-top: 10px;
+    padding-top: 20px;
+    font-size: 13px;
+    line-height: 1.6;
 }
