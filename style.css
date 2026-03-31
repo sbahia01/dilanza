@@ -1,89 +1,93 @@
-body {
-    font-family: 'Helvetica', sans-serif;
-    margin: 0;
-    background-color: #fff;
-    color: #000;
+/**
+ * DILANZA - Lógica do Protótipo
+ * Gerencia troca de idiomas e cores sem perda de estado.
+ */
+
+// Centralização de conteúdo (Dicionário)
+const content = {
+    PT: {
+        blackTitle: "CAMISA PIMA - PRETA",
+        whiteTitle: "CAMISA PIMA - BRANCA",
+        price: "R$ 490,00",
+        buyBtn: "ADICIONAR AO CARRINHO",
+        shipping: "Entrega grátis para todo o Brasil."
+    },
+    EN: {
+        blackTitle: "PIMA COTTON T-SHIRT - BLACK",
+        whiteTitle: "PIMA COTTON T-SHIRT - WHITE",
+        price: "$ 90.00",
+        buyBtn: "ADD TO BAG",
+        shipping: "Free worldwide shipping."
+    }
+};
+
+// Mapeamento das imagens renomeadas (.webp)
+const imageAssets = {
+    black: "camisa-preta.webp",
+    white: "camisa-branca.webp"
+};
+
+// Estado inicial do aplicativo
+let state = {
+    lang: 'PT',
+    color: 'black'
+};
+
+/**
+ * Função principal para atualizar a interface
+ */
+function updateUI() {
+    const data = content[state.lang];
+    const imgElement = document.getElementById('productImage');
+    
+    // 1. Inicia transição de fade-out
+    imgElement.style.opacity = 0;
+    
+    setTimeout(() => {
+        // 2. Atualiza Imagem e Textos enquanto a imagem está invisível
+        imgElement.src = imageAssets[state.color];
+        
+        document.getElementById('productTitle').innerText = 
+            (state.color === 'black') ? data.blackTitle : data.whiteTitle;
+        
+        document.getElementById('productPrice').innerText = data.price;
+        document.querySelector('.buy-btn').innerText = data.buyBtn;
+        document.querySelector('.shipping-info').innerText = data.shipping;
+        
+        // 3. Finaliza transição de fade-in
+        imgElement.style.opacity = 1;
+    }, 350);
+
+    // 4. Atualiza estado visual dos botões (Active states)
+    updateButtonStates();
 }
 
-header {
-    padding: 20px;
-    text-align: center;
-    border-bottom: 1px solid #eee;
+function updateButtonStates() {
+    // Cores
+    document.getElementById('swatchBlack').classList.toggle('active', state.color === 'black');
+    document.getElementById('swatchWhite').classList.toggle('active', state.color === 'white');
+    
+    // Idiomas
+    document.getElementById('btnPT').classList.toggle('active', state.lang === 'PT');
+    document.getElementById('btnEN').classList.toggle('active', state.lang === 'EN');
 }
 
-#brandName {
-    letter-spacing: 0.4em;
-    font-weight: 300;
-    font-size: 28px;
-    margin: 10px 0;
+/**
+ * Handlers de Evento (Chamados pelo HTML)
+ */
+function changeColor(newColor) {
+    if (state.color === newColor) return;
+    state.color = newColor;
+    updateUI();
 }
 
-.product-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 60px;
-    gap: 80px;
-    flex-wrap: wrap; /* Para dispositivos móveis */
+function changeLang(newLang) {
+    if (state.lang === newLang) return;
+    state.lang = newLang;
+    updateUI();
 }
 
-#productImage {
-    width: 100%;
-    max-width: 450px;
-    height: auto;
-    transition: opacity 0.3s ease;
-}
-
-.details-section {
-    max-width: 300px;
-    width: 100%;
-}
-
-#productTitle {
-    font-size: 14px;
-    letter-spacing: 0.1em;
-    margin-bottom: 10px;
-}
-
-#productPrice {
-    font-size: 16px;
-    margin-bottom: 30px;
-}
-
-.color-selector {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 40px;
-}
-
-.swatch {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    cursor: pointer;
-    border: 1px solid #ddd;
-    transition: transform 0.2s ease;
-}
-
-.swatch.active, .swatch:hover {
-    transform: scale(1.1);
-    border: 2px solid #000;
-}
-
-.black { background: #000; }
-.white { background: #fff; }
-
-.buy-btn {
-    width: 100%;
-    padding: 15px;
-    background: #000;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    letter-spacing: 0.1em;
-    transition: background 0.2s ease;
-}
-
-.buy-btn:hover {
-    background: #333;
-}
+// Inicialização automática ao carregar a página
+window.onload = () => {
+    updateUI();
+};
