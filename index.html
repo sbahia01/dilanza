@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>DILANZA | Luxury Concept</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="lang-selector">
+            <button onclick="changeLang('PT')">PT</button>
+            <button onclick="changeLang('EN')">EN</button>
+        </div>
+        <h1 id="brandName">DILANZA</h1>
+    </header>
+
+    <main class="product-container">
+        <div class="image-section">
+            <img id="productImage" src="https://static.wixstatic.com/media/c837a6_9356885698064b54a8b7923769c02a71~mv2.png" alt="Camisa">
+        </div>
+
+        <div class="details-section">
+            <h2 id="productTitle">CAMISA PIMA - PRETA</h2>
+            <p id="productPrice">R$ 490,00</p>
+            
+            <div class="color-selector">
+                <div class="swatch black active" onclick="changeColor('black')"></div>
+                <div class="swatch white" onclick="changeColor('white')"></div>
+            </div>
+            
+            <button class="buy-btn">ADICIONAR AO CARRINHO</button>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
