@@ -3,31 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DILANZA | Detalhes do Produto</title>
+    <title>DILANZA | Detalhes do Produto Premium</title>
+    
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body onload="loadProductDetails()">
+
     <header>
         <div class="lang-selector">
             <button id="btnPT" class="lang-btn active" onclick="changeLang('PT')">PT</button>
             <button id="btnEN" class="lang-btn" onclick="changeLang('EN')">EN</button>
         </div>
-        <h1 id="brandName" onclick="window.location.href='index.html'">DILANZA</h1>
+        
+        <h1 id="brandName" onclick="window.location.href='index.html'">
+            DILANZA
+        </h1>
     </header>
 
     <main class="product-page-container">
+
         <div class="product-image-side">
-            <img id="mainProductImage" src="" alt="Produto">
+            <img id="mainProductImage" src="" alt="DILANZA PIMA COTTON">
         </div>
 
         <div class="product-info-side">
-            <nav class="breadcrumb">Página Inicial > Camisetas > <span id="breadName"></span></nav>
-            <h2 style="font-size: 16px; letter-spacing: 1px; margin-bottom: 5px;">DILANZA</h2>
-            <h3 id="productTitle" style="font-size: 14px; font-weight: 300; margin-top: 0;"></h3>
-            <p id="productPrice" class="price-large"></p>
+            
+            <nav class="breadcrumb">
+                Página Inicial > Camisetas > <span id="breadName"></span>
+            </nav>
+
+            <h2 style="font-size: 18px; letter-spacing: 2px; margin-bottom: 5px; font-weight: bold;">
+                DILANZA
+            </h2>
+
+            <h3 id="productTitle" style="font-size: 15px; font-weight: 300; margin-top: 0; color: #555;">
+                </h3>
+
+            <p id="productPrice" style="font-size: 20px; margin: 25px 0; font-weight: bold;">
+                </p>
 
             <div class="size-selector">
-                <span>SELECIONE O TAMANHO (BR):</span>
+                <span id="selectSizeLabel" style="font-weight: bold; font-size: 12px;">
+                    SELECIONE O TAMANHO (BR):
+                </span>
+                
                 <div class="size-options">
                     <button class="size-btn" onclick="selectSize(this)">P</button>
                     <button class="size-btn" onclick="selectSize(this)">M</button>
@@ -36,71 +56,69 @@
                 </div>
             </div>
 
-            <button class="buy-btn">ADICIONAR AO CARRINHO</button>
+            <button class="buy-btn" id="mainBuyBtn" style="width: 100%; padding: 20px; background: #000; color: #fff; border: none; cursor: pointer; font-weight: bold; text-transform: uppercase;">
+                ADICIONAR AO CARRINHO
+            </button>
             
-            <p style="font-size: 11px; color: #000; margin-top: 20px; font-weight: bold;">Previsão de entrega: 2 a 5 dias úteis</p>
+            <p style="font-size: 11px; color: #000; margin-top: 25px; font-weight: bold; letter-spacing: 0.5px;">
+                Previsão de entrega: 2 a 5 dias úteis
+            </p>
             
-            <div class="return-box">
-                Devoluções gratuitas por 30 dias | Coleta em casa disponível
-            </div>
+            <div class="return-box" id="returnBox">
+                </div>
 
             <div class="details-section">
-                <div class="section-title">Os detalhes</div>
+                <div class="section-title" id="secTitleDetails">Os detalhes</div>
+                
                 <div class="details-grid">
                     <div>
-                        <strong>Destaques</strong>
-                        <ul>
-                            <li>preto</li>
-                            <li>algodão</li>
-                            <li>textura de jersey</li>
-                            <li>decote careca</li>
-                            <li>ombros deslocados</li>
-                            <li>mangas curtas</li>
-                            <li>estampa de logo no busto</li>
-                            <li>estampa de logo nas costas</li>
-                            <li>barra reta</li>
+                        <strong id="labelHighlights">Destaques</strong>
+                        <ul style="margin-top: 10px;">
+                            <li>preto</li><li>algodão</li><li>textura de jersey</li>
+                            <li>decote careca</li><li>ombros deslocados</li>
+                            <li>mangas curtas</li><li>barra reta</li>
                         </ul>
-                        <div style="margin-top:20px; font-size:10px; color:#999;">
+                        
+                        <div style="margin-top:30px; font-size:10px; color:#999; line-height: 1.5;">
                             ID DiLanza: 96556187<br>
                             ID da marca: B099PR
                         </div>
                     </div>
+
                     <div>
-                        <strong>Composição</strong>
-                        <p>algodão PIMA PERUANO 100%</p>
+                        <strong id="labelComp">Composição</strong>
+                        <p id="textComp" style="margin-bottom: 20px;">algodão PIMA PERUANO 100%</p>
                         
-                        <strong>Instruções de lavagem</strong>
-                        <p>Ler manual do usuário</p>
+                        <strong id="labelWash">Instruções de lavagem</strong>
+                        <p id="textWash">Ler manual do usuário</p>
                     </div>
                 </div>
             </div>
 
-            <div class="details-section">
-                <div class="section-title">Entregas, devoluções e vendedor</div>
+            <div class="details-section" style="margin-bottom: 100px;">
+                <div class="section-title" id="secTitleLogistics">Entregas, devoluções e vendedor</div>
+                
                 <div class="details-grid">
                     <div>
-                        <strong>Taxa de entrega única, em várias peças, de vários locais</strong>
-                        <p class="sub-info">A taxa de frete variará de acordo com a origem nacional ou internacional, independente do número de peças do pedido.</p>
-                        
-                        <strong>30 dias para devolução grátis</strong>
-                        <p class="sub-info">Precisa solicitar uma devolução? Oferecemos devoluções gratuitas em até 30 dias após o recebimento do pedido. Considere que algumas exceções podem ser aplicadas.</p>
+                        <strong id="logSub1">Taxa de entrega única</strong>
+                        <p style="font-size: 11px; color: #666;">
+                            A taxa de frete variará de acordo com a origem nacional ou internacional.
+                        </p>
                     </div>
+                    
                     <div>
-                        <strong>Taxas de importação e taxas locais</strong>
-                        <p class="sub-info">Cuidamos de toda documentação alfandegária. Todos os impostos e taxas de importação estão inclusos no preço do produto.</p>
-                        
-                        <strong>Precisa de mais alguma informação?</strong>
-                        <ul class="sub-info" style="list-style:none; padding:0;">
-                            <li>• Pedidos & entregas</li>
-                            <li>• Devoluções & Reembolsos</li>
-                            <li>• Impostos & Taxas de Importação</li>
-                        </ul>
+                        <strong id="logSub2">30 dias para devolução grátis</strong>
+                        <p style="font-size: 11px; color: #666;">
+                            Oferecemos devoluções gratuitas em até 30 dias após o recebimento.
+                        </p>
                     </div>
                 </div>
             </div>
+
         </div>
     </main>
 
     <script src="script.js"></script>
+    
 </body>
 </html>
