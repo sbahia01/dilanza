@@ -5,48 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DILANZA | Produto</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .product-page-container { display: flex; max-width: 1200px; margin: 40px auto; gap: 80px; padding: 20px; }
+        .product-info-side { flex: 1; text-align: left; }
+        .breadcrumb { font-size: 10px; color: #999; text-transform: uppercase; margin-bottom: 20px; }
+        .size-options button { border: 1px solid #ddd; background: #fff; padding: 10px 20px; cursor: pointer; margin-right: 5px; }
+        .buy-btn-large { background: #000; color: #fff; border: none; padding: 20px; width: 100%; font-weight: bold; cursor: pointer; margin-top: 20px; }
+        .product-specs { border-top: 1px solid #eee; padding-top: 20px; margin-top: 40px; font-size: 12px; line-height: 2; }
+    </style>
 </head>
-<body onload="initProduct()">
-    <header>
-        <h1 onclick="window.location.href='index.html'" style="cursor:pointer">DILANZA</h1>
-    </header>
-
+<body onload="init()">
+    <header><h1 onclick="window.location.href='index.html'" style="cursor:pointer">DILANZA</h1></header>
     <main class="product-page-container">
-        <div style="flex: 1.5; text-align: center;">
-            <img id="mainImg" src="" style="width: 100%; max-width: 500px;">
-        </div>
-
+        <div style="flex: 1.5; text-align: center;"><img id="mainImg" src="" style="width: 100%; max-width: 500px;"></div>
         <div class="product-info-side">
-            <nav style="font-size: 10px; color: #999; margin-bottom: 20px;">HOME > CAMISETAS > <span id="bread"></span></nav>
-            <h2 id="pTitle" style="letter-spacing: 2px;"></h2>
-            <p id="pPrice" style="font-weight: bold; font-size: 18px;"></p>
-
+            <nav class="breadcrumb">Home > Camisetas > <span id="bread"></span></nav>
+            <h2 id="pTitle"></h2>
+            <p id="pPrice" style="font-size: 20px; font-weight: bold;"></p>
             <div style="margin: 30px 0;">
                 <p style="font-size: 12px;">TAMANHO:</p>
-                <div class="size-options">
-                    <button onclick="this.parentElement.querySelectorAll('button').forEach(b=>b.classList.remove('selected'));this.classList.add('selected')">P</button>
-                    <button onclick="this.parentElement.querySelectorAll('button').forEach(b=>b.classList.remove('selected'));this.classList.add('selected')">M</button>
-                    <button onclick="this.parentElement.querySelectorAll('button').forEach(b=>b.classList.remove('selected'));this.classList.add('selected')">G</button>
-                </div>
+                <div class="size-options"><button>P</button><button>M</button><button>G</button><button>GG</button></div>
             </div>
-
-            <button class="buy-btn" style="width: 100%; max-width: 350px;">ADICIONAR AO CARRINHO</button>
-            
-            <div style="margin-top: 40px; border-top: 1px solid #eee; padding-top: 20px; font-size: 12px; line-height: 2;">
+            <button class="buy-btn-large">ADICIONAR AO CARRINHO</button>
+            <div class="product-specs">
                 <strong>DETALHES:</strong>
-                <ul>
-                    <li>100% Algodão Pima</li>
-                    <li>Corte Slim Premium</li>
-                    <li>Produzido no Brasil</li>
-                </ul>
+                <ul><li>Algodão Pima 100%</li><li>Toque Macio</li><li>Produzido no Brasil</li></ul>
             </div>
         </div>
     </main>
-
     <script>
-        function initProduct() {
-            const product = localStorage.getItem('selectedProduct') || 'black';
-            const isBlack = product === 'black';
+        function init() {
+            const prod = localStorage.getItem('selectedProduct') || 'black';
+            const isBlack = prod === 'black';
             document.getElementById('mainImg').src = isBlack ? 'camisa-preta.webp' : 'camisa-branca.webp';
             document.getElementById('pTitle').innerText = isBlack ? 'CAMISA PIMA - PRETA' : 'CAMISA PIMA - BRANCA';
             document.getElementById('bread').innerText = isBlack ? 'PRETA' : 'BRANCA';
