@@ -1,14 +1,18 @@
+/* RESET E FUNDAMENTOS */
+* { box-sizing: border-box; }
 body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #fff;
     color: #000;
+    overflow-x: hidden;
 }
 
+/* HEADER CENTRALIZADO */
 header {
     width: 100%;
-    padding: 40px 0;
+    padding: 50px 0;
     text-align: center;
     border-bottom: 1px solid #f2f2f2;
 }
@@ -21,7 +25,13 @@ header {
     text-transform: uppercase;
 }
 
-/* IDIOMAS */
+.lang-selector {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
 .lang-btn {
     background: none;
     border: none;
@@ -29,7 +39,6 @@ header {
     letter-spacing: 0.1em;
     cursor: pointer;
     color: #999;
-    padding: 5px;
 }
 
 .lang-btn.active {
@@ -38,42 +47,61 @@ header {
     text-decoration: underline;
 }
 
-/* LAYOUT LADO A LADO */
+/* GALERIA LADO A LADO E TAMANHO CONTROLADO */
 .gallery-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: row; /* Força o alinhamento horizontal */
     justify-content: center;
     align-items: flex-start;
-    padding: 60px 20px;
-    gap: 60px;
-    max-width: 1200px;
+    padding: 60px 5%;
+    gap: 50px;
+    max-width: 1200px; /* Limita a largura total do site */
     margin: 0 auto;
-    flex-wrap: wrap; /* Ajuste para telas menores */
 }
 
 .product-item {
     flex: 1;
-    max-width: 450px;
+    max-width: 450px; /* EVITA O TAMANHO EXAGERADO */
     text-align: center;
+}
+
+.image-box {
+    width: 100%;
+    background-color: #fff;
+    margin-bottom: 25px;
 }
 
 .image-box img {
     width: 100%;
     height: auto;
-    max-height: 550px;
+    max-height: 500px; /* Limita a altura para não ocupar a tela toda */
     object-fit: contain;
 }
 
-/* BOTÕES E TEXTOS */
+/* TEXTOS E BOTÕES */
 .product-title {
     font-size: 13px;
     letter-spacing: 0.15em;
-    margin: 25px 0 5px 0;
+    margin-bottom: 10px;
 }
 
 .product-price {
-    font-size: 15px;
+    font-size: 16px;
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+.description-wrapper {
+    min-height: 60px; /* Mantém espaço para o texto não empurrar os botões */
     margin-bottom: 20px;
+}
+
+.product-description {
+    font-size: 12px;
+    line-height: 1.6;
+    color: #666;
+    opacity: 0;
+    transition: opacity 0.4s ease;
 }
 
 .actions {
@@ -91,6 +119,7 @@ header {
     font-size: 10px;
     letter-spacing: 0.1em;
     cursor: pointer;
+    text-transform: uppercase;
 }
 
 .buy-btn {
@@ -103,14 +132,5 @@ header {
     letter-spacing: 0.2em;
     font-weight: bold;
     cursor: pointer;
-}
-
-.product-description {
-    font-size: 12px;
-    line-height: 1.6;
-    color: #666;
-    margin: 0 auto 20px;
-    max-width: 300px;
-    opacity: 0;
-    transition: opacity 0.5s;
+    text-transform: uppercase;
 }
