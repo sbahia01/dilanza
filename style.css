@@ -1,58 +1,25 @@
-/* --- BASE E TIPOGRAFIA --- */
+/* BASE DO SITE */
 * { box-sizing: border-box; }
 body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    margin: 0; padding: 0;
-    background-color: #fff; color: #000;
+    margin: 0; padding: 0; background: #fff; color: #000;
 }
 
-header {
-    width: 100%; padding: 30px 0;
-    text-align: center; border-bottom: 1px solid #f2f2f2;
-}
+header { width: 100%; padding: 30px 0; text-align: center; border-bottom: 1px solid #f2f2f2; }
+#brandName { letter-spacing: 0.6em; font-weight: 300; font-size: 32px; text-transform: uppercase; cursor: pointer; }
 
-#brandName {
-    letter-spacing: 0.6em; font-weight: 300;
-    font-size: 32px; margin: 20px 0; text-transform: uppercase;
-}
-
-.lang-selector { display: flex; justify-content: center; gap: 15px; font-size: 11px; }
-.lang-btn { background: none; border: none; cursor: pointer; color: #999; padding: 5px; }
-.lang-btn.active { color: #000; font-weight: bold; text-decoration: underline; }
-
-/* --- VITRINE (INDEX.HTML) --- */
-.gallery-container {
-    display: flex; flex-direction: row; justify-content: center;
-    align-items: flex-start; padding: 60px 5%; gap: 50px;
-    max-width: 1200px; margin: 0 auto; flex-wrap: wrap;
-}
-
-.product-item { flex: 1; max-width: 380px; text-align: center; }
-.image-box img { width: 100%; height: auto; max-height: 500px; object-fit: contain; }
-
-.product-title { font-size: 13px; letter-spacing: 0.15em; margin: 20px 0 5px 0; text-transform: uppercase; }
-.product-price { font-size: 16px; margin-bottom: 25px; font-weight: 300; }
-
-.description-wrapper { min-height: 40px; margin-bottom: 15px; }
-.product-description { font-size: 12px; line-height: 1.6; color: #666; opacity: 0; transition: opacity 0.4s; }
-
-.actions { display: flex; flex-direction: column; gap: 10px; align-items: center; }
-.detail-btn { background: #fff; border: 1px solid #000; padding: 12px; width: 220px; font-size: 10px; cursor: pointer; }
-.buy-btn { background: #000; color: #fff; border: none; padding: 16px; width: 220px; font-size: 11px; font-weight: bold; cursor: pointer; }
-
-/* --- PÁGINA DE PRODUTO (PRODUCT.HTML) --- */
+/* LAYOUT DA PÁGINA DE PRODUTO */
 .product-page-container {
-    display: flex; max-width: 1200px; margin: 40px auto; gap: 60px; padding: 20px;
+    display: flex; max-width: 1200px; margin: 40px auto; gap: 60px; padding: 0 20px;
 }
 
 .product-image-side { flex: 1.2; text-align: center; }
-.product-image-side img { width: 100%; max-width: 550px; height: auto; }
+.product-image-side img { width: 100%; max-width: 500px; }
 
-.product-info-side { flex: 1; text-align: left; display: flex; flex-direction: column; }
+.product-info-side { flex: 1; text-align: left; }
+.breadcrumb { font-size: 10px; color: #999; margin-bottom: 15px; text-transform: uppercase; }
 
-.breadcrumb { font-size: 10px; color: #999; text-transform: uppercase; margin-bottom: 20px; }
-
-/* Seleção de Tamanhos Realista */
+/* SELEÇÃO DE TAMANHOS FUNCIONAL */
 .size-selector { margin: 25px 0; }
 .size-selector span { font-size: 11px; font-weight: bold; display: block; margin-bottom: 10px; }
 .size-options { display: flex; gap: 8px; }
@@ -61,13 +28,21 @@ header {
     cursor: pointer; font-size: 12px; transition: 0.2s;
 }
 .size-btn:hover { border-color: #000; }
-.size-btn.selected { border-color: #000; background: #f5f5f5; font-weight: bold; }
+/* Classe que o JavaScript aplicará ao clicar */
+.size-btn.selected { border-color: #000; background: #000; color: #fff; font-weight: bold; }
 
-/* Detalhes Técnicos Estilo Farfetch */
-.farfetch-details {
-    margin-top: 40px; border-top: 1px solid #eee; padding-top: 30px;
+.buy-btn {
+    background: #000; color: #fff; border: none; padding: 18px; 
+    width: 100%; font-size: 12px; font-weight: bold; cursor: pointer; margin: 10px 0;
 }
-.farfetch-details h3 { font-size: 12px; letter-spacing: 1px; margin-bottom: 20px; }
-.details-grid { display: flex; gap: 50px; font-size: 12px; line-height: 1.8; color: #333; }
-.details-grid ul { padding-left: 18px; margin: 0; }
-.product-id-tag { font-size: 10px; color: #999; margin-top: 15px; text-transform: uppercase; }
+
+/* SEÇÃO DE DETALHES ESTILO FARFETCH */
+.farfetch-details { margin-top: 50px; border-top: 1px solid #eee; padding-top: 30px; }
+.farfetch-details h3 { font-size: 12px; letter-spacing: 1px; margin-bottom: 25px; text-transform: uppercase; }
+
+/* Divisão em tópicos (Colunas) conforme solicitado */
+.details-grid { display: flex; gap: 60px; font-size: 12px; line-height: 2; color: #333; }
+.details-grid strong { display: block; margin-bottom: 5px; color: #000; text-transform: uppercase; font-size: 11px; }
+.details-grid ul { padding-left: 15px; margin: 0; list-style-type: disc; }
+
+.product-id-tag { font-size: 10px; color: #999; margin-top: 30px; text-transform: uppercase; line-height: 1.8; }
