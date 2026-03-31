@@ -1,31 +1,78 @@
-<div class="size-selector">
-    <span>Selecione o tamanho:</span>
-    <div class="size-options">
-        <button class="size-btn" onclick="selectSize(this)">P</button>
-        <button class="size-btn" onclick="selectSize(this)">M</button>
-        <button class="size-btn" onclick="selectSize(this)">G</button>
-        <button class="size-btn" onclick="selectSize(this)">GG</button>
-    </div>
-</div>
-
-<button class="buy-btn" style="width: 100%; margin-top: 20px;">ADICIONAR AO CARRINHO</button>
-
-<div class="farfetch-details">
-    <h3>OS DETALHES</h3>
-    <div style="display: flex; gap: 40px;">
-        <div>
-            <strong>Destaques</strong>
-            <ul style="padding-left: 20px;">
-                <li>Algodão Pima 100%</li>
-                <li>Gola careca</li>
-                <li>Manga Curta</li>
-                <li>Toque Macio</li>
-            </ul>
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DILANZA | Detalhes do Produto</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body onload="loadProductDetails()">
+    <header>
+        <div class="lang-selector">
+            <button id="btnPT" class="lang-btn active" onclick="changeLang('PT')">PT</button>
+            <button id="btnEN" class="lang-btn" onclick="changeLang('EN')">EN</button>
         </div>
-        <div>
-            <strong>Composição</strong>
-            <p>algodão 100%</p>
-            <strong>ID DILANZA:</strong> <span id="prodId"></span>
+        <h1 id="brandName" onclick="window.location.href='index.html'" style="cursor:pointer">DILANZA</h1>
+    </header>
+
+    <main class="product-page-container">
+        <div class="product-image-side">
+            <img id="mainProductImage" src="" alt="Produto DILANZA">
         </div>
-    </div>
-</div>
+
+        <div class="product-info-side">
+            <nav class="breadcrumb">Página Inicial > Camisetas > <span id="breadName"></span></nav>
+            
+            <h2 class="product-brand-title" style="font-size: 18px; letter-spacing: 2px;">DILANZA</h2>
+            <h3 id="productTitle" style="font-size: 16px; font-weight: 300; margin: 10px 0;"></h3>
+            <p id="productPrice" style="font-size: 18px; margin: 20px 0;"></p>
+
+            <div class="size-selector">
+                <span>SELECIONE O TAMANHO (BR):</span>
+                <div class="size-options">
+                    <button class="size-btn" onclick="selectSize(this)">P</button>
+                    <button class="size-btn" onclick="selectSize(this)">M</button>
+                    <button class="size-btn" onclick="selectSize(this)">G</button>
+                    <button class="size-btn" onclick="selectSize(this)">GG</button>
+                </div>
+            </div>
+
+            <button class="buy-btn" style="width: 100%; margin-top: 10px;">ADICIONAR AO CARRINHO</button>
+            
+            <p style="font-size: 11px; color: #666; margin-top: 15px;">
+                Previsão de entrega: 2 a 5 dias úteis.<br>
+                Devoluções gratuitas em até 30 dias.
+            </p>
+
+            <div class="farfetch-details">
+                <h3>OS DETALHES</h3>
+                <div class="details-grid">
+                    <div>
+                        <strong>Destaques</strong>
+                        <ul>
+                            <li>Algodão Pima 100%</li>
+                            <li>Gola careca</li>
+                            <li>Manga Curta</li>
+                            <li>Toque Macio</li>
+                            <li>Corte Premium Slim</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <strong>Composição</strong>
+                        <p>algodão 100%</p>
+                        
+                        <strong>Instruções de lavagem</strong>
+                        <p>Lavar à mão ou máquina (ciclo delicado).<br>Ler manual do usuário.</p>
+                    </div>
+                </div>
+                <div class="product-id-tag">
+                    ID DILANZA: <span id="prodId"></span><br>
+                    ID DA MARCA: M07-PIMA
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
