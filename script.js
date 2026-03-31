@@ -1,43 +1,30 @@
 const content = {
     PT: {
-        price: "R$ 490,00",
-        buy: "COMPRAR AGORA",
-        details: "VER DETALHES",
-        hide: "OCULTAR",
-        blackTitle: "CAMISA PIMA - PRETA",
-        whiteTitle: "CAMISA PIMA - BRANCA",
-        desc: "Algodão Pima Peruano premium. Toque sedoso, durabilidade extrema e brilho natural."
+        price: "R$ 490,00", buy: "COMPRAR AGORA", details: "VER DETALHES", hide: "OCULTAR",
+        desc: "Algodão Pima Peruano premium. Toque sedoso e durabilidade extrema.",
+        blackTitle: "CAMISA PIMA - PRETA", whiteTitle: "CAMISA PIMA - BRANCA"
     },
     EN: {
-        price: "$ 90.00",
-        buy: "BUY NOW",
-        details: "VIEW DETAILS",
-        hide: "HIDE",
-        blackTitle: "PIMA T-SHIRT - BLACK",
-        whiteTitle: "PIMA T-SHIRT - WHITE",
-        desc: "Premium Peruvian Pima Cotton. Silky touch, extreme durability, and natural luster."
+        price: "$ 90.00", buy: "BUY NOW", details: "VIEW DETAILS", hide: "HIDE",
+        desc: "Premium Peruvian Pima Cotton. Silky touch and extreme durability.",
+        blackTitle: "PIMA T-SHIRT - BLACK", whiteTitle: "PIMA T-SHIRT - WHITE"
     }
 };
 
 let currentLang = 'PT';
 
-// Troca de Idioma
 function changeLang(lang) {
     currentLang = lang;
     const t = content[lang];
-
     document.getElementById('titleBlack').innerText = t.blackTitle;
     document.getElementById('titleWhite').innerText = t.whiteTitle;
     document.getElementById('priceBlack').innerText = t.price;
     document.getElementById('priceWhite').innerText = t.price;
-
     document.querySelectorAll('.buy-btn').forEach(b => b.innerText = t.buy);
-    
     document.getElementById('btnPT').className = (lang === 'PT') ? 'lang-btn active' : 'lang-btn';
     document.getElementById('btnEN').className = (lang === 'EN') ? 'lang-btn active' : 'lang-btn';
 }
 
-// Mostrar/Ocultar Detalhes
 function toggleDetails(color) {
     const id = color === 'black' ? 'descBlack' : 'descWhite';
     const btnId = color === 'black' ? 'btnDetailBlack' : 'btnDetailWhite';
@@ -54,7 +41,6 @@ function toggleDetails(color) {
     }
 }
 
-// Navegação para página de produto
 function goToProduct(productId) {
     localStorage.setItem('selectedProduct', productId);
     window.location.href = 'product.html';
