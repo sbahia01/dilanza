@@ -9,32 +9,35 @@
 <body>
     <header>
         <div class="lang-selector">
-            <button class="lang-btn active" id="btnPT" onclick="changeLang('PT')">PT</button>
-            <button class="lang-btn" id="btnEN" onclick="changeLang('EN')">EN</button>
+            <button class="lang-btn active">PT</button>
+            <button class="lang-btn">EN</button>
         </div>
         <h1 id="brandName">DILANZA</h1>
     </header>
 
-    <main class="product-container">
-        <div class="image-section">
-            <img id="productImage" src="camisa-preta.webp" alt="Camisa Pima Premium">
+    <main class="gallery-container">
+        <div class="product-item">
+            <div class="image-box">
+                <img src="camisa-preta.webp" alt="Camisa Pima - Preta">
+            </div>
+            <div class="details-box">
+                <h2 class="product-title">CAMISA PIMA - PRETA</h2>
+                <p class="product-price">R$ 490,00</p>
+                <button class="buy-btn">VER DETALHES</button>
+            </div>
         </div>
 
-        <div class="details-section">
-            <h2 id="productTitle">CAMISA PIMA - PRETA</h2>
-            <p id="productPrice">R$ 490,00</p>
-            
-            <div class="color-selector">
-                <span class="label">COR:</span>
-                <div class="swatch black active" id="swatchBlack" onclick="changeColor('black')"></div>
-                <div class="swatch white" id="swatchWhite" onclick="changeColor('white')"></div>
+        <div class="product-item">
+            <div class="image-box">
+                <img src="camisa-branca.webp" alt="Camisa Pima - Branca">
             </div>
-            
-            <button class="buy-btn">ADICIONAR AO CARRINHO</button>
-            <p class="shipping-info">Entrega grátis para todo o Brasil.</p>
+            <div class="details-box">
+                <h2 class="product-title">CAMISA PIMA - BRANCA</h2>
+                <p class="product-price">R$ 490,00</p>
+                <button class="buy-btn">VER DETALHES</button>
+            </div>
         </div>
     </main>
 
-    <script src="script.js"></script>
 </body>
 </html>
