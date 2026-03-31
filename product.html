@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DILANZA | Produto</title>
+    <title>DILANZA | Detalhes do Produto</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body onload="loadProduct()">
@@ -17,14 +17,14 @@
 
     <main class="product-page-container">
         <div class="product-image-side">
-            <img id="mainImg" src="" alt="Produto">
+            <img id="mainImg" src="" alt="Produto DILANZA">
         </div>
 
         <div class="product-info-side">
-            <nav class="breadcrumb">Home > Camisetas</nav>
-            <h2 style="font-size: 18px; letter-spacing: 2px;">DILANZA</h2>
+            <nav class="breadcrumb">Página Inicial > Camisetas > <span id="breadName"></span></nav>
+            <h2 style="font-size: 18px; letter-spacing: 2px; font-weight: bold;">DILANZA</h2>
             <h3 id="productTitle" style="font-size: 15px; font-weight: 300;"></h3>
-            <p id="productPrice" style="font-size: 18px; font-weight: bold; margin: 20px 0;"></p>
+            <p id="productPrice" style="font-size: 20px; font-weight: bold; margin: 25px 0;"></p>
 
             <div class="size-selector">
                 <span id="selectLabel" style="font-weight: bold; font-size: 12px;"></span>
@@ -32,19 +32,23 @@
                     <button class="size-btn" onclick="selectSize(this)">P</button>
                     <button class="size-btn" onclick="selectSize(this)">M</button>
                     <button class="size-btn" onclick="selectSize(this)">G</button>
+                    <button class="size-btn" onclick="selectSize(this)">GG</button>
                 </div>
             </div>
 
             <button class="buy-btn" id="mainBuyBtn" style="width: 100%;"></button>
             <p id="delInfo" style="font-size: 11px; margin-top: 20px; font-weight: bold;"></p>
+            
             <div class="return-box" id="returnBox"></div>
 
             <div class="details-section">
-                <div class="section-title" id="secDetails"></div>
+                <div class="section-title" id="secTitleDetails"></div>
                 <div class="details-grid">
                     <div>
                         <strong id="labelHigh"></strong>
-                        <ul><li>preto</li><li>algodão pima peruano</li></ul>
+                        <ul style="padding-left: 15px;">
+                            <li>preto / branco</li><li>algodão pima peruano</li><li>toque extra macio</li>
+                        </ul>
                     </div>
                     <div>
                         <strong id="labelComp"></strong>
@@ -55,16 +59,19 @@
                 </div>
             </div>
 
-            <div class="details-section">
-                <div class="section-title" id="secLog"></div>
+            <div class="details-section" style="margin-bottom: 80px;">
+                <div class="section-title" id="secTitleLog"></div>
                 <div class="details-grid">
                     <div>
                         <strong id="logS1"></strong>
                         <p id="logD1" style="font-size: 11px; color: #666;"></p>
+                        
+                        <strong id="logS2" style="margin-top: 15px;"></strong>
+                        <p id="logD2" style="font-size: 11px; color: #666;"></p>
                     </div>
                     <div>
-                        <strong id="logS2"></strong>
-                        <p id="logD2" style="font-size: 11px; color: #666;"></p>
+                        <strong id="logS3"></strong>
+                        <p id="logD3" style="font-size: 11px; color: #666;"></p>
                     </div>
                 </div>
             </div>
