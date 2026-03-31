@@ -1,3 +1,4 @@
+// --- CONFIGURAÇÃO DE DADOS E IDIOMAS (MANTENDO A INTEGRIDADE TOTAL) ---
 const content = {
     PT: { blackTitle: "CAMISA PIMA - PRETA", whiteTitle: "CAMISA PIMA - BRANCA", price: "R$ 490,00" },
     EN: { blackTitle: "PIMA COTTON T-SHIRT - BLACK", whiteTitle: "PIMA COTTON T-SHIRT - WHITE", price: "$ 90.00" }
@@ -6,25 +7,30 @@ const content = {
 let currentLang = 'PT';
 let currentColor = 'black';
 
+// --- AQUI ESTÁ A MUDANÇA: COLOQUE O NOME EXATO DOS ARQUIVOS QUE VOCÊ SUBIU ---
 const images = {
-    black: "https://static.wixstatic.com/media/c837a6_9356885698064b54a8b7923769c02a71~mv2.png",
-    white: "https://static.wixstatic.com/media/c837a6_789311406080447087799015d8621434~mv2.png"
+    black: "camisa-preta.png",
+    white: "camisa-branca.png"
 };
 
+// --- FUNÇÃO DE TROCA DE COR (SEM CORTES) ---
 function changeColor(color) {
     currentColor = color;
     updateUI();
 }
 
+// --- FUNÇÃO DE TROCA DE IDIOMA ---
 function changeLang(lang) {
     currentLang = lang;
     updateUI();
 }
 
+// --- FUNÇÃO DE ATUALIZAÇÃO GERAL (MANTENDO A INTEGRIDADE) ---
 function updateUI() {
     const data = content[currentLang];
     const imgElement = document.getElementById('productImage');
     
+    // Aplica uma transição suave de Fade para manter o padrão de luxo
     imgElement.style.opacity = 0;
     
     setTimeout(() => {
@@ -32,5 +38,5 @@ function updateUI() {
         document.getElementById('productTitle').innerText = (currentColor === 'black') ? data.blackTitle : data.whiteTitle;
         document.getElementById('productPrice').innerText = data.price;
         imgElement.style.opacity = 1;
-    }, 300);
+    }, 300); // 300ms é o tempo da transição
 }
