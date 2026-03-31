@@ -6,7 +6,7 @@ const content = {
         hide: "OCULTAR",
         blackTitle: "CAMISA PIMA - PRETA",
         whiteTitle: "CAMISA PIMA - BRANCA",
-        desc: "Algodão Pima Peruano premium. Toque sedoso, durabilidade extrema e brilho natural. O ápice do conforto minimalista."
+        desc: "Algodão Pima Peruano premium colhido à mão. Toque sedoso, durabilidade extrema e brilho natural. O ápice do conforto minimalista."
     },
     EN: {
         price: "$ 90.00",
@@ -15,7 +15,7 @@ const content = {
         hide: "HIDE",
         blackTitle: "PIMA T-SHIRT - BLACK",
         whiteTitle: "PIMA T-SHIRT - WHITE",
-        desc: "Premium Peruvian Pima Cotton. Silky touch, extreme durability, and natural luster. The pinnacle of minimalist comfort."
+        desc: "Premium hand-harvested Peruvian Pima Cotton. Silky touch, extreme durability, and natural luster. The pinnacle of minimalist comfort."
     }
 };
 
@@ -25,32 +25,27 @@ function changeLang(lang) {
     currentLang = lang;
     const t = content[lang];
 
-    // Traduz Títulos e Preços
+    // Atualiza Textos de Identificação
     document.getElementById('titleBlack').innerText = t.blackTitle;
     document.getElementById('titleWhite').innerText = t.whiteTitle;
     document.getElementById('priceBlack').innerText = t.price;
     document.getElementById('priceWhite').innerText = t.price;
 
-    // Traduz Botões
+    // Atualiza Botões de Compra e Detalhes
     document.querySelectorAll('.buy-btn').forEach(b => b.innerText = t.buy);
-    document.querySelectorAll('.detail-btn').forEach(b => {
-        // Se já estiver aberto, mantém o texto de "Ocultar" traduzido
-        if (b.innerText === content.PT.hide || b.innerText === content.EN.hide) {
-            b.innerText = t.hide;
-        } else {
-            b.innerText = t.details;
-        }
-    });
+    
+    // Verifica estado atual do botão de detalhes para não perder o texto "HIDE/OCULTAR"
+    const btnB = document.getElementById('btnDetailBlack');
+    const btnW = document.getElementById('btnDetailWhite');
+    
+    btnB.innerText = (document.getElementById('descBlack').style.opacity === "1") ? t.hide : t.details;
+    btnW.innerText = (document.getElementById('descWhite').style.opacity === "1") ? t.hide : t.details;
 
-    // Traduz Descrições (se estiverem visíveis)
-    if (document.getElementById('descBlack').style.opacity === "1") {
-        document.getElementById('descBlack').innerText = t.desc;
-    }
-    if (document.getElementById('descWhite').style.opacity === "1") {
-        document.getElementById('descWhite').innerText = t.desc;
-    }
+    // Traduz descrições ativas
+    if(document.getElementById('descBlack').style.opacity === "1") document.getElementById('descBlack').innerText = t.desc;
+    if(document.getElementById('descWhite').style.opacity === "1") document.getElementById('descWhite').innerText = t.desc;
 
-    // Estilo dos botões de idioma
+    // Toggle visual dos botões de idioma
     document.getElementById('btnPT').className = (lang === 'PT') ? 'lang-btn active' : 'lang-btn';
     document.getElementById('btnEN').className = (lang === 'EN') ? 'lang-btn active' : 'lang-btn';
 }
@@ -63,7 +58,7 @@ function toggleDetails(color) {
 
     if (el.style.opacity === "1") {
         el.style.opacity = "0";
-        el.innerText = "";
+        setTimeout(() => { el.innerText = ""; }, 400);
         btn.innerText = content[currentLang].details;
     } else {
         el.innerText = content[currentLang].desc;
