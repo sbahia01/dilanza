@@ -1,70 +1,73 @@
-// Dicionário de tradução completo
-const translations = {
+const content = {
     PT: {
         price: "R$ 490,00",
         buy: "COMPRAR AGORA",
         details: "VER DETALHES",
-        hideDetails: "OCULTAR",
+        hide: "OCULTAR",
         blackTitle: "CAMISA PIMA - PRETA",
         whiteTitle: "CAMISA PIMA - BRANCA",
-        description: "Algodão Pima Peruano colhido à mão. Toque sedoso, durabilidade extrema e brilho natural. O ápice do conforto minimalista."
+        desc: "Algodão Pima Peruano premium. Toque sedoso, durabilidade extrema e brilho natural. O ápice do conforto minimalista."
     },
     EN: {
-        price: "$ 490.00",
+        price: "$ 90.00",
         buy: "BUY NOW",
         details: "VIEW DETAILS",
-        hideDetails: "HIDE",
+        hide: "HIDE",
         blackTitle: "PIMA T-SHIRT - BLACK",
         whiteTitle: "PIMA T-SHIRT - WHITE",
-        description: "Hand-harvested Peruvian Pima Cotton. Silky touch, extreme durability, and natural luster. The pinnacle of minimalist comfort."
+        desc: "Premium Peruvian Pima Cotton. Silky touch, extreme durability, and natural luster. The pinnacle of minimalist comfort."
     }
 };
 
 let currentLang = 'PT';
 
-// Função para mudar o idioma
 function changeLang(lang) {
     currentLang = lang;
-    const t = translations[lang];
+    const t = content[lang];
 
-    // Atualiza Textos
-    document.getElementById('priceBlack').innerText = t.price;
-    document.getElementById('priceWhite').innerText = t.price;
+    // Traduz Títulos e Preços
     document.getElementById('titleBlack').innerText = t.blackTitle;
     document.getElementById('titleWhite').innerText = t.whiteTitle;
-    
-    // Atualiza botões
-    document.querySelectorAll('.buy-btn').forEach(btn => btn.innerText = t.buy);
-    document.querySelectorAll('.detail-btn').forEach(btn => {
-        if (!btn.innerText.includes("HIDE") && !btn.innerText.includes("OCULTAR")) {
-            btn.innerText = t.details;
+    document.getElementById('priceBlack').innerText = t.price;
+    document.getElementById('priceWhite').innerText = t.price;
+
+    // Traduz Botões
+    document.querySelectorAll('.buy-btn').forEach(b => b.innerText = t.buy);
+    document.querySelectorAll('.detail-btn').forEach(b => {
+        // Se já estiver aberto, mantém o texto de "Ocultar" traduzido
+        if (b.innerText === content.PT.hide || b.innerText === content.EN.hide) {
+            b.innerText = t.hide;
+        } else {
+            b.innerText = t.details;
         }
     });
 
-    // Atualiza classes dos botões de idioma
-    document.getElementById('btnPT').classList.toggle('active', lang === 'PT');
-    document.getElementById('btnEN').classList.toggle('active', lang === 'EN');
+    // Traduz Descrições (se estiverem visíveis)
+    if (document.getElementById('descBlack').style.opacity === "1") {
+        document.getElementById('descBlack').innerText = t.desc;
+    }
+    if (document.getElementById('descWhite').style.opacity === "1") {
+        document.getElementById('descWhite').innerText = t.desc;
+    }
 
-    // Se a descrição estiver aberta, traduz ela também
-    if(document.getElementById('descBlack').innerText !== "") toggleDetails('black', true);
-    if(document.getElementById('descWhite').innerText !== "") toggleDetails('white', true);
+    // Estilo dos botões de idioma
+    document.getElementById('btnPT').className = (lang === 'PT') ? 'lang-btn active' : 'lang-btn';
+    document.getElementById('btnEN').className = (lang === 'EN') ? 'lang-btn active' : 'lang-btn';
 }
 
-// Função para mostrar/esconder detalhes
-function toggleDetails(color, onlyUpdate = false) {
-    const descId = color === 'black' ? 'descBlack' : 'descWhite';
+function toggleDetails(color) {
+    const id = color === 'black' ? 'descBlack' : 'descWhite';
     const btnId = color === 'black' ? 'btnDetailBlack' : 'btnDetailWhite';
-    const descElement = document.getElementById(descId);
-    const btnElement = document.getElementById(btnId);
-    const t = translations[currentLang];
+    const el = document.getElementById(id);
+    const btn = document.getElementById(btnId);
 
-    if (descElement.innerText === "" || onlyUpdate) {
-        descElement.innerText = t.description;
-        btnElement.innerText = t.hideDetails;
-        descElement.style.opacity = "1";
+    if (el.style.opacity === "1") {
+        el.style.opacity = "0";
+        el.innerText = "";
+        btn.innerText = content[currentLang].details;
     } else {
-        descElement.innerText = "";
-        btnElement.innerText = t.details;
-        descElement.style.opacity = "0";
+        el.innerText = content[currentLang].desc;
+        el.style.opacity = "1";
+        btn.innerText = content[currentLang].hide;
     }
 }
