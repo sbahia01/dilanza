@@ -1,0 +1,73 @@
+body {
+    font-family: 'Helvetica', sans-serif;
+    margin: 0;
+    background-color: #fff;
+    color: #000;
+}
+
+header {
+    padding: 40px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+#brandName {
+    letter-spacing: 0.4em;
+    font-weight: 300;
+    font-size: 32px;
+}
+
+.product-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px;
+    gap: 80px;
+}
+
+#productImage {
+    width: 450px;
+    transition: opacity 0.3s ease;
+}
+
+.details-section {
+    max-width: 300px;
+}
+
+#productTitle {
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+}
+
+#productPrice {
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+.color-selector {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.swatch {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid #ddd;
+}
+
+.black { background: #000; }
+.white { background: #fff; }
+
+.buy-btn {
+    width: 100%;
+    padding: 15px;
+    background: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 0.1em;
+}
