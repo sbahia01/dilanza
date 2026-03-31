@@ -1,13 +1,13 @@
 const content = {
     PT: {
         price: "R$ 490,00", buy: "COMPRAR AGORA", details: "VER DETALHES", hide: "OCULTAR",
-        desc: "Algodão Pima Peruano premium. Toque sedoso e durabilidade extrema.",
-        blackTitle: "CAMISA PIMA - PRETA", whiteTitle: "CAMISA PIMA - BRANCA"
+        blackTitle: "CAMISA PIMA - PRETA", whiteTitle: "CAMISA PIMA - BRANCA",
+        desc: "Algodão Pima Peruano premium. Toque sedoso, durabilidade extrema e brilho natural."
     },
     EN: {
         price: "$ 90.00", buy: "BUY NOW", details: "VIEW DETAILS", hide: "HIDE",
-        desc: "Premium Peruvian Pima Cotton. Silky touch and extreme durability.",
-        blackTitle: "PIMA T-SHIRT - BLACK", whiteTitle: "PIMA T-SHIRT - WHITE"
+        blackTitle: "PIMA T-SHIRT - BLACK", whiteTitle: "PIMA T-SHIRT - WHITE",
+        desc: "Premium Peruvian Pima Cotton. Silky touch, extreme durability, and natural luster."
     }
 };
 
