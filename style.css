@@ -1,93 +1,121 @@
-/**
- * DILANZA - Lógica do Protótipo
- * Gerencia troca de idiomas e cores sem perda de estado.
- */
-
-// Centralização de conteúdo (Dicionário)
-const content = {
-    PT: {
-        blackTitle: "CAMISA PIMA - PRETA",
-        whiteTitle: "CAMISA PIMA - BRANCA",
-        price: "R$ 490,00",
-        buyBtn: "ADICIONAR AO CARRINHO",
-        shipping: "Entrega grátis para todo o Brasil."
-    },
-    EN: {
-        blackTitle: "PIMA COTTON T-SHIRT - BLACK",
-        whiteTitle: "PIMA COTTON T-SHIRT - WHITE",
-        price: "$ 90.00",
-        buyBtn: "ADD TO BAG",
-        shipping: "Free worldwide shipping."
-    }
-};
-
-// Mapeamento das imagens renomeadas (.webp)
-const imageAssets = {
-    black: "camisa-preta.webp",
-    white: "camisa-branca.webp"
-};
-
-// Estado inicial do aplicativo
-let state = {
-    lang: 'PT',
-    color: 'black'
-};
-
-/**
- * Função principal para atualizar a interface
- */
-function updateUI() {
-    const data = content[state.lang];
-    const imgElement = document.getElementById('productImage');
-    
-    // 1. Inicia transição de fade-out
-    imgElement.style.opacity = 0;
-    
-    setTimeout(() => {
-        // 2. Atualiza Imagem e Textos enquanto a imagem está invisível
-        imgElement.src = imageAssets[state.color];
-        
-        document.getElementById('productTitle').innerText = 
-            (state.color === 'black') ? data.blackTitle : data.whiteTitle;
-        
-        document.getElementById('productPrice').innerText = data.price;
-        document.querySelector('.buy-btn').innerText = data.buyBtn;
-        document.querySelector('.shipping-info').innerText = data.shipping;
-        
-        // 3. Finaliza transição de fade-in
-        imgElement.style.opacity = 1;
-    }, 350);
-
-    // 4. Atualiza estado visual dos botões (Active states)
-    updateButtonStates();
+/* RESET E BASE */
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin: 0;
+    background-color: #ffffff;
+    color: #000000;
+    -webkit-font-smoothing: antialiased;
 }
 
-function updateButtonStates() {
-    // Cores
-    document.getElementById('swatchBlack').classList.toggle('active', state.color === 'black');
-    document.getElementById('swatchWhite').classList.toggle('active', state.color === 'white');
-    
-    // Idiomas
-    document.getElementById('btnPT').classList.toggle('active', state.lang === 'PT');
-    document.getElementById('btnEN').classList.toggle('active', state.lang === 'EN');
+/* HEADER E LOGO */
+header {
+    padding: 30px 20px;
+    text-align: center;
+    border-bottom: 1px solid #f2f2f2;
 }
 
-/**
- * Handlers de Evento (Chamados pelo HTML)
- */
-function changeColor(newColor) {
-    if (state.color === newColor) return;
-    state.color = newColor;
-    updateUI();
+#brandName {
+    letter-spacing: 0.5em;
+    font-weight: 300;
+    font-size: 32px;
+    margin: 15px 0;
+    text-transform: uppercase;
 }
 
-function changeLang(newLang) {
-    if (state.lang === newLang) return;
-    state.lang = newLang;
-    updateUI();
+/* SELETOR DE IDIOMAS (ESTILIZADO) */
+.lang-selector {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
 
-// Inicialização automática ao carregar a página
-window.onload = () => {
-    updateUI();
-};
+.lang-btn {
+    background: none;
+    border: none;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    color: #999;
+    padding: 5px;
+}
+
+.lang-btn.active {
+    color: #000;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* CONTAINER DA GALERIA (A CHAVE DO LADO A LADO) */
+.gallery-container {
+    display: flex;
+    justify-content: center; /* Centraliza a galeria na tela */
+    align-items: flex-start; /* Alinha os itens pelo topo */
+    padding: 80px 40px;
+    gap: 60px; /* Espaço elegante entre as duas camisas */
+    max-width: 1400px;
+    margin: 0 auto;
+    flex-wrap: wrap; /* Para ficar uma embaixo da outra no celular */
+}
+
+/* ITEM DE PRODUTO INDIVIDUAL */
+.product-item {
+    flex: 1; /* Cada item ocupa o mesmo espaço */
+    min-width: 350px; /* Impede que fiquem muito pequenas */
+    max-width: 500px; /* Impede que fiquem gigantes */
+    text-align: center; /* Centraliza textos abaixo da imagem */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* CAIXA DA IMAGEM */
+.image-box {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+/* A IMAGEM AGORA TEM TAMANHO CONTROLADO */
+.image-box img {
+    width: 100%;
+    height: auto;
+    max-height: 500px; /* Controla a altura máxima para não explodir */
+    object-fit: contain; /* Garante que a camisa não seja cortada */
+}
+
+/* DETALHES DO PRODUTO */
+.details-box {
+    width: 100%;
+    max-width: 350px;
+}
+
+.product-title {
+    font-size: 14px;
+    letter-spacing: 0.15em;
+    margin: 0 0 8px 0;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.product-price {
+    font-size: 16px;
+    margin: 0 0 30px 0;
+    font-weight: 300;
+}
+
+/* BOTÃO DE COMPRA (ESTILO BOUTIQUE) */
+.buy-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+}
+
+.buy-btn:hover {
+    background-color: #333;
+}
