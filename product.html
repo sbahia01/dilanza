@@ -3,74 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DILANZA | Detalhes do Produto</title>
+    <title>DILANZA | Produto</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body onload="loadProductDetails()">
+<body onload="initProduct()">
     <header>
-        <div class="lang-selector">
-            <button id="btnPT" class="lang-btn active">PT</button>
-            <button id="btnEN" class="lang-btn">EN</button>
-        </div>
         <h1 onclick="window.location.href='index.html'" style="cursor:pointer">DILANZA</h1>
     </header>
 
     <main class="product-page-container">
-        <div class="product-image-side">
-            <img id="mainProductImage" src="" alt="Produto">
+        <div style="flex: 1.5; text-align: center;">
+            <img id="mainImg" src="" style="width: 100%; max-width: 500px;">
         </div>
 
         <div class="product-info-side">
-            <nav class="breadcrumb">Página Inicial > Camisetas > <span id="breadName"></span></nav>
-            <h2 id="productTitle"></h2>
-            <p id="productPrice" class="price-large"></p>
+            <nav style="font-size: 10px; color: #999; margin-bottom: 20px;">HOME > CAMISETAS > <span id="bread"></span></nav>
+            <h2 id="pTitle" style="letter-spacing: 2px;"></h2>
+            <p id="pPrice" style="font-weight: bold; font-size: 18px;"></p>
 
-            <div class="size-selector">
-                <span>Selecione o tamanho:</span>
+            <div style="margin: 30px 0;">
+                <p style="font-size: 12px;">TAMANHO:</p>
                 <div class="size-options">
-                    <button>P</button><button>M</button><button>G</button><button>GG</button>
+                    <button onclick="this.parentElement.querySelectorAll('button').forEach(b=>b.classList.remove('selected'));this.classList.add('selected')">P</button>
+                    <button onclick="this.parentElement.querySelectorAll('button').forEach(b=>b.classList.remove('selected'));this.classList.add('selected')">M</button>
+                    <button onclick="this.parentElement.querySelectorAll('button').forEach(b=>b.classList.remove('selected'));this.classList.add('selected')">G</button>
                 </div>
             </div>
 
-            <button class="buy-btn-large">ADICIONAR AO CARRINHO</button>
-
-            <div class="shipping-info">
-                <p><strong>Previsão de entrega:</strong> 2 a 5 dias úteis</p>
-                <p class="return-policy">Devoluções gratuitas em até 30 dias.</p>
-            </div>
-
-            <div class="product-specs">
-                <h3>OS DETALHES</h3>
-                <ul id="specList">
-                    <li>Algodão Pima 100%</li>
-                    <li>Gola careca</li>
-                    <li>Manga Curta</li>
-                    <li>Toque Macio</li>
+            <button class="buy-btn" style="width: 100%; max-width: 350px;">ADICIONAR AO CARRINHO</button>
+            
+            <div style="margin-top: 40px; border-top: 1px solid #eee; padding-top: 20px; font-size: 12px; line-height: 2;">
+                <strong>DETALHES:</strong>
+                <ul>
+                    <li>100% Algodão Pima</li>
+                    <li>Corte Slim Premium</li>
+                    <li>Produzido no Brasil</li>
                 </ul>
             </div>
         </div>
     </main>
 
     <script>
-        // Lógica para carregar o produto correto nesta página
-        function loadProductDetails() {
+        function initProduct() {
             const product = localStorage.getItem('selectedProduct') || 'black';
-            const img = document.getElementById('mainProductImage');
-            const title = document.getElementById('productTitle');
-            const bread = document.getElementById('breadName');
-            const price = document.getElementById('productPrice');
-
-            if(product === 'black') {
-                img.src = 'camisa-preta.webp';
-                title.innerText = 'CAMISA PIMA - PRETA';
-                bread.innerText = 'Preta';
-                price.innerText = 'R$ 490,00';
-            } else {
-                img.src = 'camisa-branca.webp';
-                title.innerText = 'CAMISA PIMA - BRANCA';
-                bread.innerText = 'Branca';
-                price.innerText = 'R$ 490,00';
-            }
+            const isBlack = product === 'black';
+            document.getElementById('mainImg').src = isBlack ? 'camisa-preta.webp' : 'camisa-branca.webp';
+            document.getElementById('pTitle').innerText = isBlack ? 'CAMISA PIMA - PRETA' : 'CAMISA PIMA - BRANCA';
+            document.getElementById('bread').innerText = isBlack ? 'PRETA' : 'BRANCA';
+            document.getElementById('pPrice').innerText = 'R$ 490,00';
         }
     </script>
 </body>
