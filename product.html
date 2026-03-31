@@ -3,45 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DILANZA | Produto</title>
+    <title>DILANZA | Detalhes do Produto</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        .product-page-container { display: flex; max-width: 1200px; margin: 40px auto; gap: 80px; padding: 20px; }
-        .product-info-side { flex: 1; text-align: left; }
-        .breadcrumb { font-size: 10px; color: #999; text-transform: uppercase; margin-bottom: 20px; }
-        .size-options button { border: 1px solid #ddd; background: #fff; padding: 10px 20px; cursor: pointer; margin-right: 5px; }
-        .buy-btn-large { background: #000; color: #fff; border: none; padding: 20px; width: 100%; font-weight: bold; cursor: pointer; margin-top: 20px; }
-        .product-specs { border-top: 1px solid #eee; padding-top: 20px; margin-top: 40px; font-size: 12px; line-height: 2; }
-    </style>
 </head>
-<body onload="init()">
-    <header><h1 onclick="window.location.href='index.html'" style="cursor:pointer">DILANZA</h1></header>
+<body onload="loadProductDetails()">
+    <header>
+        <h1 onclick="window.location.href='index.html'" style="cursor:pointer">DILANZA</h1>
+    </header>
+
     <main class="product-page-container">
-        <div style="flex: 1.5; text-align: center;"><img id="mainImg" src="" style="width: 100%; max-width: 500px;"></div>
+        <div class="product-image-side">
+            <img id="mainProductImage" src="" alt="Produto DILANZA">
+        </div>
+
         <div class="product-info-side">
-            <nav class="breadcrumb">Home > Camisetas > <span id="bread"></span></nav>
-            <h2 id="pTitle"></h2>
-            <p id="pPrice" style="font-size: 20px; font-weight: bold;"></p>
-            <div style="margin: 30px 0;">
-                <p style="font-size: 12px;">TAMANHO:</p>
-                <div class="size-options"><button>P</button><button>M</button><button>G</button><button>GG</button></div>
+            <nav class="breadcrumb">Página Inicial > Camisetas > <span id="breadName"></span></nav>
+            
+            <h2 class="product-brand-title">DILANZA</h2>
+            <h3 id="productTitle" class="product-name-subtitle"></h3>
+            <p id="productPrice" class="price-large"></p>
+
+            <div class="size-selector-label">SELECIONE O TAMANHO (BR)</div>
+            <div class="size-options">
+                <button onclick="selectSize(this)">P</button>
+                <button onclick="selectSize(this)">M</button>
+                <button onclick="selectSize(this)">G</button>
+                <button onclick="selectSize(this)">GG</button>
             </div>
-            <button class="buy-btn-large">ADICIONAR AO CARRINHO</button>
-            <div class="product-specs">
-                <strong>DETALHES:</strong>
-                <ul><li>Algodão Pima 100%</li><li>Toque Macio</li><li>Produzido no Brasil</li></ul>
+
+            <button class="add-to-cart-btn">ADICIONAR AO CARRINHO</button>
+
+            <div class="info-section">
+                <h3>Os Detalhes</h3>
+                <div class="info-grid">
+                    <div>
+                        <strong>Destaques</strong>
+                        <ul class="info-list">
+                            <li id="detailColor"></li>
+                            <li>Algodão Pima Peruano</li>
+                            <li>Gola careca reforçada</li>
+                            <li>Mangas curtas</li>
+                            <li>Corte Slim Fit</li>
+                            <li>Toque de seda natural</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <strong>Composição</strong>
+                        <p>Algodão 100%</p>
+                        
+                        <strong>Instruções de lavagem</strong>
+                        <p>Lavar à mão ou à máquina (ciclo delicado).<br>Ler manual do usuário.</p>
+                    </div>
+                </div>
+                <div class="product-ids">
+                    ID DILANZA: <span id="prodId"></span><br>
+                    ID da marca: M07-PIMA
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h3>Entrega e Devoluções</h3>
+                <p style="font-size: 12px; color: #666;">
+                    Envio expresso disponível. Devoluções gratuitas em até 30 dias. 
+                    O item deve estar em sua condição original com as etiquetas fixadas.
+                </p>
             </div>
         </div>
     </main>
-    <script>
-        function init() {
-            const prod = localStorage.getItem('selectedProduct') || 'black';
-            const isBlack = prod === 'black';
-            document.getElementById('mainImg').src = isBlack ? 'camisa-preta.webp' : 'camisa-branca.webp';
-            document.getElementById('pTitle').innerText = isBlack ? 'CAMISA PIMA - PRETA' : 'CAMISA PIMA - BRANCA';
-            document.getElementById('bread').innerText = isBlack ? 'PRETA' : 'BRANCA';
-            document.getElementById('pPrice').innerText = 'R$ 490,00';
-        }
-    </script>
+
+    <script src="script.js"></script>
 </body>
 </html>
